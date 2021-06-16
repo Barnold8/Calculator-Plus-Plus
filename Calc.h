@@ -33,8 +33,8 @@ const std::string OUTOFORDER[]{
 const int OUTOFORDER_L = sizeof(OUTOFORDER) / sizeof(OUTOFORDER[0]);
 
 namespace Calc {
-
-	void visual(double data, bool first);
+	
+	bool visual(double data, bool first);
 
 	enum Ops {
 
@@ -44,7 +44,7 @@ namespace Calc {
 		divide,
 		modulo,
 
-		MAX
+		MAX //THIS VALUE MUST BE USED TO LEAVE PROGRAM 
 
 
 	};
