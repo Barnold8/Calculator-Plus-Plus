@@ -4,13 +4,10 @@
 
 namespace Calc {
 
+	bool visual(double value, bool first) {
 
-
-
-
-	void visual(double value, bool first) {
-
-
+		static bool start{ true };
+		system("cls");
 		const int calcAmount{ 20 };
 		bool hasValue{ true };
 
@@ -41,7 +38,7 @@ namespace Calc {
 
 		};
 
-		
+
 
 		for (int i{ 0 }; i < calcAmount; ++i) {
 
@@ -54,11 +51,35 @@ namespace Calc {
 
 		}
 
+		if (start != true) {
+			start = false;
+			char contin{};
+			std::cout << "\nContinue? y/n\t";
+			std::cin >> contin;
 
+			if (std::cin.fail()) {
+
+
+				std::cin.clear();	//Basic cleanup that removes any remaining data in the cin buffer
+				std::cin.ignore();
+				std::cout << "\nERROR! Unexpected input. Ending program...\n\n";
+
+				return false;
+			}
+			else if (contin == 'Y' || contin == 'y') {
+
+				return true;
+
+			}
+			else { return false; }
+		}
+		start = false;
+		return true; //Allows first run of the software
 	}
 
 
-	double mth(double x, double y, Ops op) {
+
+	double mth(double y, double x, Ops op) {
 
 		switch (op) {
 
@@ -96,7 +117,7 @@ namespace Calc {
 		static int times{ 0 };
 		double x{};
 
-		std::cout << "Input a value" << std::endl;
+		std::cout << "\n\nInput a value" << std::endl;
 		std::cin >> x;
 		if (std::cin.fail()) {	
 			
@@ -147,11 +168,12 @@ namespace Calc {
 			std::cin.clear();	
 			std::cin.ignore();
 			std::cout << "\nERROR! Unexpected input. Asking for another input....\n\n";
-
+			return MAX;
 		}
-		else if(choice <=0 || choice >= arrayLength +1 ){
-
-			std::cout << "NO";
+		else if(choice <=0 || choice >  arrayLength +1 ){
+			system("cls");
+			std::cout << "\nThe choice input was not in the range of choices given :(\n" << std::endl;
+			getOp();
 
 			//std::cout << "returning x"; <-- for debug
 			
@@ -162,7 +184,7 @@ namespace Calc {
 			return ops[choice - 1];
 		}
 
-		
+		return MAX;
 		
 	}
 
@@ -174,6 +196,8 @@ namespace Calc {
 		
 		}
 		
+		std::cout << "\n\nPress Enter to continue...\n\n" << std::endl;
+		system("Pause");
 	
 	}
 
