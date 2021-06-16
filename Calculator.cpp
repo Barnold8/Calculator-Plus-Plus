@@ -4,11 +4,23 @@
 
 
 
+
+
 int main()
 {
-    //Currently empty so I can work on the header files and their forward declaration to provide functionality to the program
+    //ALL CODE IN MAIN IS FOR DEBUGGING/TESTING
 
-   
+    bool running{ true };
+    Calc::visual(0, true);
+
+
+    while (running) {
+    
+        std::cout << Calc::mth(Calc::getInput(),Calc::getInput(),Calc::getOp());
+        
+        running = false;
+    
+    }
     
   
 }
